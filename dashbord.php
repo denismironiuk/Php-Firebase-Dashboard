@@ -19,12 +19,12 @@ foreach($db as $key=> $product){
 ?>
 <?php
 /** QUERY TO RETURN ALL MONTHS THERE CUSTOMERS BUYING PRODUCTS */
-$db = $database->getReference('Cart List/Admin View')->getChildKeys();
+$db = $database->getReference('Cart List/Admin View')->getValue();
 $dates = array();
 
 foreach ($db as $value) {
-  $monthList = $database->getReference('Cart List/Admin View/' . $value . '/products')->getValue();
-  foreach ($monthList as $date) {
+  $tempValue=$value['products'];
+  foreach ($tempValue as $date) {
     $month = date('F', strtotime($date['date']));
     $dates[] = $month;
   }
@@ -79,6 +79,7 @@ $newMonth = array_unique($dates);
           async: false,
 
         }).responseText;
+        console.log(chatData)
         var data = google.visualization.arrayToDataTable(JSON.parse(chatData));
 
         var options = {
