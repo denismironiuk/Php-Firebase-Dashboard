@@ -1,0 +1,11 @@
+.settings-container{
+    display: flex;
+   
+    gap: 0.5rem;
+}
+
+.settings-container button{
+    background-color: yellow;
+    padding: 0.5rem;
+
+}
